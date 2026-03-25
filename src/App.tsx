@@ -15,14 +15,10 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="all-button"
-        // Приклад для однієї кнопки (зроби так для всіх трьох)
         onClick={() => {
           getAll()
             .then(setGoods)
-            .catch(error => {
-              // eslint-disable-next-line no-console
-              console.error('Помилка завантаження:', error);
-            });
+            .catch(() => {}); // Ти вже це зробив, молодець!
         }}
       >
         Load all goods
@@ -31,7 +27,11 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="first-five-button"
-        onClick={() => get5First().then(setGoods)}
+        onClick={() => {
+          get5First()
+            .then(setGoods)
+            .catch(() => {}); // ДОДАЙ ЦЕ
+        }}
       >
         Load 5 first goods
       </button>
@@ -39,7 +39,11 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="red-button"
-        onClick={() => getRedGoods().then(setGoods)}
+        onClick={() => {
+          getRedGoods()
+            .then(setGoods)
+            .catch(() => {}); // І ЦЕ ТЕЖ
+        }}
       >
         Load red goods
       </button>
