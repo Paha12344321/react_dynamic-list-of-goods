@@ -15,7 +15,15 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="all-button"
-        onClick={() => getAll().then(setGoods)}
+        // Приклад для однієї кнопки (зроби так для всіх трьох)
+        onClick={() => {
+          getAll()
+            .then(setGoods)
+            .catch(error => {
+              // eslint-disable-next-line no-console
+              console.error('Помилка завантаження:', error);
+            });
+        }}
       >
         Load all goods
       </button>
